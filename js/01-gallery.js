@@ -8,7 +8,7 @@ const galleryMarkup = createGalleryCardsMarkup(galleryItems);
 // console.log(galleryMarkup);
 // console.log(galleryConteiner);
 // добавляем в разметку галерею
-galleryConteiner.insertAdjacentHTML("beforeend", galleryMarkup);
+galleryConteiner.insertAdjacentHTML("afterbegin", galleryMarkup);
 // объявляем функцию создания карточек галереи
 function createGalleryCardsMarkup(galleryItems) {
   // возвращаем созданные значения
@@ -33,3 +33,11 @@ function createGalleryCardsMarkup(galleryItems) {
   );
 }
 // console.log(galleryItems);
+// делегирование
+galleryConteiner.addEventListener("click", onGalleryConteinerClick);
+function onGalleryConteinerClick(evt) {
+  //body
+  evt.preventDefault();
+  console.log(evt.target.dataset.sourse);
+  // console.log(evt.target);
+}
