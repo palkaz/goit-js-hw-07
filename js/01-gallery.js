@@ -38,6 +38,9 @@ galleryConteiner.addEventListener("click", onGalleryConteinerClick);
 function onGalleryConteinerClick(evt) {
   //body
   evt.preventDefault();
-  console.log(evt.target.dataset.sourse);
-  // console.log(evt.target);
+  if (evt.target.nodeName !== "IMG") {
+    return;
+  }
+  // console.log(evt.target.dataset.sourse);
+  console.log(evt.target);
 }
