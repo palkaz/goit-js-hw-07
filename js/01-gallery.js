@@ -33,6 +33,7 @@ function createGalleryCardsMarkup(galleryItems) {
   );
 }
 // console.log(galleryItems);
+
 // делегирование
 galleryConteiner.addEventListener("click", onGalleryConteinerClick);
 function onGalleryConteinerClick(evt) {
@@ -41,6 +42,23 @@ function onGalleryConteinerClick(evt) {
   if (evt.target.nodeName !== "IMG") {
     return;
   }
-  // console.log(evt.target.dataset.sourse);
-  console.log(evt.target);
+  // console.log(evt.target.dataset.source);
+  // console.log(evt.target);
+  let bigImg = evt.target.dataset.source;
+  // console.log(evt.target);
+
+  const img = evt.target;
+  // console.log(evt.currentTarget);
+
+  const smallImg = img.getAttribute("src");
+  console.log(smallImg);
+
+  if (img.src === bigImg) {
+    // console.log(smallImg);
+    img.setAttribute("src", `${bigImg}`);
+    img.setAttribute("data-source", `${smallImg}`);
+  }
+
+  img.setAttribute("data-source", `${smallImg}`);
+  img.setAttribute("src", `${bigImg}`);
 }
