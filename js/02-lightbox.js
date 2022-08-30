@@ -16,7 +16,7 @@ function createGalleryCardsMarkup(galleryItems) {
       //   на ретерне вызываем мар распыляем массив
       .map(({ preview, original, description }) => {
         // на ретерне мэпа вставляем шаблон с значениями от распыления
-        return `<a class="gallery__item" href="${preview}">
+        return `<a class="gallery__item" href="${original}">
   <img class="gallery__image" src="${preview}" alt="${description}" />
 </a>`;
       })
@@ -25,3 +25,17 @@ function createGalleryCardsMarkup(galleryItems) {
   );
 }
 // console.log(galleryItems);
+// делегирование
+galleryConteiner.addEventListener("click", onGalleryConteinerClick);
+function onGalleryConteinerClick(evt) {
+  //body
+  evt.preventDefault();
+  // подключение библиотеки
+  const lightbox = new SimpleLightbox(".gallery a", {
+    /* options */
+    // задержка появления текста
+    captionDelay: 250,
+    // текст
+    captionsData: "alt",
+  });
+}
