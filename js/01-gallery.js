@@ -60,10 +60,27 @@ function onGalleryConteinerClick(evt) {
   //   img.setAttribute("src", `${bigImg}`);
 
   // конец  замена ссылки на изображении
-
-  const instance = basicLightbox.create(`
+  // открытие модального окна
+  const instance = basicLightbox.create(
+    `
       <img src="${evt.target.dataset.source}">
-  `);
+  `,
+    {
+      // при открытой модалке вешаем слушателя на кнопку
+      onShow: (instance) => {
+        window.addEventListener("keydown", onEscPress);
+      },
+      // при закрытии модалки удаляем слушателя
+      onClose: (instance) => {
+        window.removeEventListener("keydown", onEscPress);
+      },
+    }
+  );
+  function onEscPress(evt) {
+    if (evt.code === "Escape") {
+      instance.close();
+    }
+  }
 
   instance.show();
 }
