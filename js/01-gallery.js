@@ -44,21 +44,26 @@ function onGalleryConteinerClick(evt) {
   }
   // console.log(evt.target.dataset.source);
   // console.log(evt.target);
-  let bigImg = evt.target.dataset.source;
-  // console.log(evt.target);
+  // замена ссылки на изображении
+  //   let bigImg = evt.target.dataset.source;
+  //   // console.log(evt.target);
+  //   const img = evt.target;
+  //   // console.log(evt.currentTarget);
+  //   const smallImg = img.getAttribute("src");
+  //   console.log(smallImg);
+  //   if (img.src === bigImg) {
+  //     // console.log(smallImg);
+  //     img.setAttribute("src", `${bigImg}`);
+  //     img.setAttribute("data-source", `${smallImg}`);
+  //   }
+  //   img.setAttribute("data-source", `${smallImg}`);
+  //   img.setAttribute("src", `${bigImg}`);
 
-  const img = evt.target;
-  // console.log(evt.currentTarget);
+  // конец  замена ссылки на изображении
 
-  const smallImg = img.getAttribute("src");
-  console.log(smallImg);
+  const instance = basicLightbox.create(`
+      <img src="${evt.target.dataset.source}">
+  `);
 
-  if (img.src === bigImg) {
-    // console.log(smallImg);
-    img.setAttribute("src", `${bigImg}`);
-    img.setAttribute("data-source", `${smallImg}`);
-  }
-
-  img.setAttribute("data-source", `${smallImg}`);
-  img.setAttribute("src", `${bigImg}`);
+  instance.show();
 }
